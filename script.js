@@ -53,21 +53,25 @@ async function crearPost() {
 //Tarea 3
 //PUT ---> Actualización total
 async function actualizarPost(id) {
-  //Creando la respuesta
-  const respuesta = await fetch(`${BASE_URL}/${id}`, {
-    method: "PUT",
-    body: JSON.stringify({
-      //Para mandar los datos al servidor
-      id: id,
-      title: "Título totalmente actualizado",
-      body: "Contenido nuevo",
-      userId: 1,
-    }),
-    headers: { "Content-type": "application/json; charset=UTF-8" },
-  });
+  try {
+    //Creando la respuesta
+    const respuesta = await fetch(`${BASE_URL}/${id}`, {
+      method: "PUT",
+      body: JSON.stringify({
+        //Para mandar los datos al servidor
+        id: id,
+        title: "Título totalmente actualizado",
+        body: "Contenido nuevo",
+        userId: 1,
+      }),
+      headers: { "Content-type": "application/json; charset=UTF-8" },
+    });
 
-  const datos = await respuesta.json();
-  console.log("Tarea 3 - PUT: ", datos);
+    const datos = await respuesta.json();
+    console.log("Tarea 3 - PUT: ", datos);
+  } catch (error) {
+    console.error("Error en PUT: ", error.message);
+  }
 }
 
 //Función de ejecución del flujo
