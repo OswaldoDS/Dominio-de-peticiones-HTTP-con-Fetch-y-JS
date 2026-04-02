@@ -12,6 +12,11 @@ const ID = 12;
 async function leerPosts() {
   try {
     const respuesta = await fetch(`${BASE_URL}/${ID}`);
+
+    console.log(respuesta.ok); // true status -> entre 200–299; false status -> error (404, 500, etc.)
+    console.log(respuesta.status);
+    console.log(respuesta.statusText); // "OK", "Not Found"
+
     if (!respuesta.ok) throw new Error("Error al obtener datos");
     const datos = await respuesta.json();
     console.log("Tarea 1 - GET: Registros", datos);
