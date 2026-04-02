@@ -5,13 +5,13 @@ require("dotenv").config();
 const BASE_URL = process.env.API_URL;
 
 //Asignando un id
-const id = 12;
+const ID = 12;
 
 //Tarea 1
 //GET ---> Leer datos
 async function leerPosts() {
   try {
-    const respuesta = await fetch(`${BASE_URL}/${id}`);
+    const respuesta = await fetch(`${BASE_URL}/${ID}`);
     if (!respuesta.ok) throw new Error("Error al obtener datos");
     const datos = await respuesta.json();
     console.log("Tarea 1 - GET: Registros", datos);
@@ -50,11 +50,32 @@ async function crearPost() {
   }
 }
 
+//Tarea 3
+//PUT ---> Actualización total
+async function actualizarPost(id) {
+  //Creando la respuesta
+  const respuesta = await fetch(`${BASE_URL}/${id}`, {
+    method: "PUT",
+    body: JSON.stringify({
+      //Para mandar los datos al servidor
+      id: id,
+      title: "Título totalmente actualizado",
+      body: "Contenido nuevo",
+      userId: 1,
+    }),
+    headers: { "Content-type": "application/json; charset=UTF-8" },
+  });
+
+  const datos = await respuesta.json();
+  console.log("Tarea 3 - PUT: ", datos);
+}
+
 //Función de ejecución del flujo
 async function ejecutarPractica() {
   console.log("Ejecutando...");
   await leerPosts();
   await crearPost();
+  await actualizarPost(1);
 }
 
 ejecutarPractica();
