@@ -1,0 +1,24 @@
+{
+  "name": "dominio-de-peticiones-http-con-fetch-y-js",
+  "version": "1.0.0",
+  "description": "OBJETIVO: Implementar los 5 verbos principales de una API \r RESTful usando JSONPlaceholder.",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OswaldoDS/Dominio-de-peticiones-HTTP-con-Fetch-y-JS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/OswaldoDS/Dominio-de-peticiones-HTTP-con-Fetch-y-JS/issues"
+  },
+  "homepage": "https://github.com/OswaldoDS/Dominio-de-peticiones-HTTP-con-Fetch-y-JS#readme",
+  "dependencies": {
+    "dotenv": "^17.3.1"
+  }
+}
