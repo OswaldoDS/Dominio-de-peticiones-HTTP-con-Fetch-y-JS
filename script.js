@@ -74,12 +74,35 @@ async function actualizarPost(id) {
   }
 }
 
+//Tarea 3.2
+//PATCH ---> Actualización parcial
+async function parcialPost(id) {
+  try {
+    //Creando la respuesta
+    const respuesta = await fetch(`${BASE_URL}/${id}`, {
+      method: "PATCH",
+      body: JSON.stringify({
+        //Para mandar los datos al servido
+        id: 4,
+        title: "Título parcialmente actualizado",
+      }),
+      headers: { "Content-type": "application/json; charset=UTF-8" },
+    });
+
+    const datos = await respuesta.json();
+    console.log("Tarea 3.2 - PATCH: ", datos);
+  } catch (error) {
+    console.error("Error en PATCH: ", error.message);
+  }
+}
+
 //Función de ejecución del flujo
 async function ejecutarPractica() {
   console.log("Ejecutando...");
   await leerPosts();
   await crearPost();
   await actualizarPost(1);
+  await parcialPost(1);
 }
 
 ejecutarPractica();
