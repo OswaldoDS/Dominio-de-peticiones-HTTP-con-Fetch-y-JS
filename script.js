@@ -101,12 +101,15 @@ async function parcialPost(id) {
 //Tarea 4
 //DELETE ---> Eliminar
 async function eliminarPost(id) {
-  const respuesta = await fetch(`${BASE_URL}/${id}`, {
-    method: "DELETE",
-  });
-
-  if (respuesta.status == 200) {
-    console.log(`Tarea 4 - DELETE: Post ${id} eliminado con éxito`);
+  try {
+    const respuesta = await fetch(`${BASE_URL}/${id}`, {
+      method: "DELETE",
+    });
+    if (respuesta.status == 200) {
+      console.log(`Tarea 4 - DELETE: Post ${id} eliminado con éxito`);
+    }
+  } catch (error) {
+    console.error("Error en DELETE: ", error.message);
   }
 }
 
