@@ -123,4 +123,11 @@ async function ejecutarPractica() {
   await eliminarPost(1);
 }
 
-ejecutarPractica();
+async function numerosPost(num) {
+  for (i = 1; i <= num; i++) {
+    await leerPosts(i);
+  }
+}
+
+// ejecutarPractica();
+numerosPost(10); //Indicar cuántos POST se desean visualizar
