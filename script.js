@@ -4,14 +4,11 @@ require("dotenv").config();
 //Referenciamos la variable de entorno .env
 const BASE_URL = process.env.API_URL;
 
-//Asignando un id
-const ID = 12;
-
 //Tarea 1
 //GET ---> Leer datos
-async function leerPosts() {
+async function leerPosts(id) {
   try {
-    const respuesta = await fetch(`${BASE_URL}/${ID}`);
+    const respuesta = await fetch(`${BASE_URL}/${id}`);
 
     console.log(respuesta.ok); // true status -> entre 200–299; false status -> error (404, 500, etc.)
     console.log(respuesta.status);
@@ -101,13 +98,26 @@ async function parcialPost(id) {
   }
 }
 
+//Tarea 4
+//DELETE ---> Eliminar
+async function eliminarPost(id) {
+  const respuesta = await fetch(`${BASE_URL}/${id}`, {
+    method: "DELETE",
+  });
+
+  if (respuesta.status == 200) {
+    console.log(`Tarea 4 - DELETE: Post ${id} eliminado con éxito`);
+  }
+}
+
 //Función de ejecución del flujo
 async function ejecutarPractica() {
   console.log("Ejecutando...");
-  await leerPosts();
+  await leerPosts(12);
   await crearPost();
   await actualizarPost(1);
   await parcialPost(1);
+  await eliminarPost(1);
 }
 
 ejecutarPractica();
