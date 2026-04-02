@@ -10,9 +10,8 @@ async function leerPosts() {
   try {
     const respuesta = await fetch(BASE_URL);
     if (!respuesta.ok) throw new Error("Error al obtener datos");
-
     const datos = await respuesta.json();
-    console.log("Tarea 1 - GET: Primeros 2 registros", datos);
+    console.log("Tarea 1 - GET: Registros", datos);
   } catch (error) {
     console.error("Fallo en GET: ", error.message);
   }
